@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>TADEE-ASSIGNMENT</title>
+    <script>
+        
+        function calculate(){
+            let H1=document.getElementById("H1").value
+            let H2=document.getElementById("H2").value
+            let ww=document.getElementById("ww").value
+            let x5=document.getElementById("x2").value
+           
+           if(H1===H2){
+            let ww=document.getElementById("ww").value
+            let H=document.getElementById("H1").value  
+            let L=document.getElementById("L").value
+            let W=document.getElementById("W").value
+            let UT=document.getElementById("UT").value
+            let SF=document.getElementById("SF").value
+            
+            let weff=Math.sqrt((ww*ww)+(W*W))
+            let T=UT/SF;
+            let sag;
+            let sagx;
+            let x2=Math.abs((L/2)-x5)
+            sag=(weff*L*L)/(8*T)
+            sagx=(weff*x2*x2)/(2*T)
+            
+            let GroundClearance=H-sag;
+            let GroundClearancex=sagx+GroundClearance;
+            let img=document.getElementById("label")
+            img.classList.remove("notdisplay")
+            img.classList.add("display")
+           
+            let detail=document.getElementById("details")
+            detail.classList.add("notdisplay")
+            let after=document.getElementById("after")
+            after.classList.remove("notdisplay")
+            after.classList.add("display")
+            let Hr=document.getElementById("Hr").innerText=H
+            let Lr=document.getElementById("Lr").innerText=L
+            let Wr=document.getElementById("Wr").innerText=weff.toFixed(2)
+            let Ur=document.getElementById("Ur").innerText=UT
+            let SFr=document.getElementById("Sfr").innerText=SF
+            let GCr=document.getElementById("GCr").innerText=GroundClearance
+            document.getElementById("O").innerText=(L/2)
+            let GCx=document.getElementById("GCx").innerText=GroundClearancex
+           }
+
+           else if(H2>H1){
+            let x1;
+            let x2;
+            let x3;
+            let L=document.getElementById("L").value;
+            
+            let W=document.getElementById("W").value
+            let UT=document.getElementById("UT").value
+            let SF=document.getElementById("SF").value
+           
+            let weff=Math.sqrt((ww*ww)+(W*W))
+            let T=UT/SF;
+            let dif=((H2-H1)*2*T)/(L*weff)
+            x1=(L-dif)/2
+            x2=(L+dif)/2
+            x3=Math.abs(x5-x1)
+            sagx1=(weff*x1*x1)/(2*T)
+            sagx2=(weff*x2*x2)/(2*T)
+            let GroundClearance=H1-sagx1;
+            sagx=(weff*x3*x3)/(2*T)
+            let GroundClearancex=sagx+GroundClearance;
+            let img=document.getElementById("label1")
+            img.classList.remove("notdisplay")
+            img.classList.add("display")
+           
+            let detail=document.getElementById("details")
+            detail.classList.add("notdisplay")
+            let after=document.getElementById("after")
+            after.classList.remove("notdisplay")
+            after.classList.add("display")
+            let Hr=document.getElementById("Hr").innerText=H1
+            let Hr1=document.getElementById("Hr1").innerText=H2
+            let Lr=document.getElementById("Lr").innerText=L
+            let Wr=document.getElementById("Wr").innerText=weff.toFixed(2)
+            let Ur=document.getElementById("Ur").innerText=UT
+            let SFr=document.getElementById("Sfr").innerText=SF
+            document.getElementById("O").innerText=x1
+            let GCr=document.getElementById("GCr").innerText=GroundClearance.toFixed(2)
+            let GCx=document.getElementById("GCx").innerText=GroundClearancex.toFixed(2)
+
+           }
+           else if(H1>H2){
+            let x1;
+    
+            let x3;
+            let L=document.getElementById("L").value;
+            
+            let W=document.getElementById("W").value
+            let UT=document.getElementById("UT").value
+            let SF=document.getElementById("SF").value
+            
+            let weff=Math.sqrt((ww*ww)+(W*W))
+            let T=UT/SF;
+            let dif=((H1-H2)*2*T)/(L*weff)
+            x1=(L-dif)/2
+            let x2=L-x1
+            x3=Math.abs(x5-x2)
+            sagx1=(weff*x1*x1)/(2*T)
+            sagx2=(weff*x2*x2)/(2*T)
+            let GroundClearance=H1-sagx1;
+            sagx=(weff*x3*x3)/(2*T)
+            let GroundClearancex=sagx+GroundClearance;
+            let img=document.getElementById("label2")
+            img.classList.remove("notdisplay")
+            img.classList.add("display")
+           
+            let detail=document.getElementById("details")
+            detail.classList.add("notdisplay")
+            let after=document.getElementById("after")
+            after.classList.remove("notdisplay")
+            after.classList.add("display")
+            let Hr=document.getElementById("Hr").innerText=H1
+            let Hr1=document.getElementById("Hr1").innerText=H2
+            let Lr=document.getElementById("Lr").innerText=L
+            let Wr=document.getElementById("Wr").innerText=weff.toFixed(2)
+            let Ur=document.getElementById("Ur").innerText=UT
+            let SFr=document.getElementById("Sfr").innerText=SF
+            document.getElementById("O").innerText=x2
+            let GCr=document.getElementById("GCr").innerText=GroundClearance.toFixed(2)
+            let GCx=document.getElementById("GCx").innerText=GroundClearancex.toFixed(2)
+            
+           }
+
+        }
+    </script>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: azure;
+        }
+        header{
+            display: flex; justify-content: space-between; background-color: rgb(249, 190, 101); color: brown;
+            height: 15vh;
+            align-items: center;
+            font-size: xx-large;
+            padding: 0;
+            margin: 0;
+
+
+        }
+        p{
+            font-size: large;
+
+        }
+        #label{
+            height: 60vh;
+            width: 60vw;
+            
+        }
+        #label2{
+            height: 60vh;
+            width: 60vw;
+        }
+        #label1{
+            height: 60vh;
+            width: 60vw;
+            
+        }
+        .display{
+            display: block;
+        }
+        .notdisplay{
+            display:none;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <header >
+        <div>TADEE PROJECT</div>
+        <div><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#detail">PROJECT DETAILS</button></div>
+    </header>
+
+     <div class="modal fade" id="detail">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>TADEE-ASSIGNMENT </h2>
+                </div>
+                <div class="modal-body">
+                    <div><P><H2>PROFESSOR INCHARGE</H2></P>
+                        <img src="images/sir.jpg" style="height: 50px;width: 50px;" alt=""><span style="font-size: x-large;"> DR. M.P.SELVAN</span>
+                    </div>
+                    <div>
+                        <h2>MEMBER</h2>
+                        <div>
+                            <img src="images/photo1.jpg" style="height:50px;width: 50px;" alt=""><span style="font-size: large;">Vivekananda Sahoo    <span>Roll:107123137</span></span>
+                        </div>
+                        <div>
+                            <img src="images/nimesh.jpg" style="height:50px;width: 50px;"  alt=""><span>Nimesh Timothy    <span>Roll:107123073</span></span>
+                        </div>
+                        <div><img src="images/sadhna.jpg" style="height:50px;width: 50px;" src="" alt=""><span>Sadhana    <span>Roll:107123119</span></div></p>
+                    </div>
+
+                    <div class="fs-2"><h3>Project Description</h3>
+                    <p>A tool to calculate the minimum ground clearance and clearance profile of overhead lines between two towers, considering tower heights, span, conductor weight, tensile strength, and safety factor.</p>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-bs-dismiss="modal">Back</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div>
+        <img src="images/tadee.png" id="label" class="notdisplay" alt="">
+        <img src="images/tadee1.png" id="label1" class="notdisplay" alt="">
+        <img src="images/tadee2.png" id="label2" class="notdisplay" alt="">
+    </div>
+    <div id="after" class="notdisplay">
+        Height of Tower(m): <p id="Hr"></p>
+        Height of Tower(m): <p id="Hr1"></p>
+
+        Span Length(m): <p id="Lr"></p>
+
+        Effective weight of Conductor per m (kg/m): <p id="Wr"></p>
+
+        Ultimate Tensile Strength(in Kg): <p id="Ur"></p>
+
+        Safety Factor: <p id="Sfr"></p>
+
+        The point of minimum Ground Clearance (O point) from Tower 2: <p id="O"></p>
+
+        Ground Clearance at point O (m): <p id="GCr"></p>
+
+        Ground Clearance at point x (m): <p id="GCx"></p>
+
+    </div>
+    <br> <br>
+
+   <div id="details" class="display">
+    <div class="row">
+        <span class="col">Height of Tower 1:<input type="number" placeholder="In meter " name="" id="H1"></span>
+        <span class="col">Height of Tower 2:<input type="number" placeholder="In meter " name="" id="H2"></span>
+        <span class="col">Span Length: <input type="number" placeholder="In meter" name="" id="L"></span>
+       
+
+    </div>
+    <br>
+    <div class="row">
+        <span class="col">Ultimate Tensile Strength: <input type="number" placeholder="in Kg" id="UT"></span>
+        
+        <span class="col">Safety Factor: <input type="number" name="" id="SF"></span>
+        <span class="col">weight of Conductor : <input type="number" placeholder="in Kg/m" name="" id="W"></span>
+        <br>
+        
+    </div>
+    <br>
+    <div class="row">
+       
+        <span class="col">Wind pressure : <input type="number" placeholder="in kg/m" name="" id="ww"></span>
+        <span class="col">Distance from left Tower: <input type="number" placeholder="in meter" name="" id="x2"></span>
+        <span class="col"><button onclick="calculate()" class="btn btn-warning  ">Calculate</button></span>
+    </div>
+   
+   </div>
+    
+</body>
+</html>
